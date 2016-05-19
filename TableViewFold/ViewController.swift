@@ -10,7 +10,7 @@ import UIKit
 
 class groupModel: NSObject{
     
-    var buttonKey :UnsafePointer<Void> = nil
+    
     
     var isOpen: Bool?
     var groupName: String?
@@ -18,6 +18,8 @@ class groupModel: NSObject{
     var groupArray: Array<String>?
 }
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    static var buttonKey = "ButtonKey"
     var tableView :UITableView?
     var firstArray : Array<String>?
     var secondArray : Array<String>?
@@ -28,30 +30,33 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         initData()
         
-//        initTableView()
+        initTableView()
         
     }
     func initData(){
+        firstArray = [String]()
+        secondArray = [String]()
+        dataSource = [groupModel]()
         for i in 1...15{
             let str = String(format: "火影%02d", i)
-            print(str)
             if i < 6{
                 firstArray?.append(str)
-                
-                print(firstArray)
             }else{
                 secondArray?.append(str)
             }
-            print("\(i)---\(str)")
         }
-        for _ in 1...2{
-//            let model = groupModel()
-//            model.isOpen = false
-//            model.groupName = "小学同学"
-//            model.groupArray = firstArray
-//            model.groupCount = firstArray?.count
-//            dataSource?.append(model)
-//            print(dataSource!)
+        for i in 1...2{
+            let model = groupModel()
+            model.isOpen = false
+            if i == 1{
+                model.groupName = "小学同学"
+            }else{
+                model.groupName = "大学同学"
+            }
+            
+            model.groupArray = firstArray
+            model.groupCount = firstArray?.count
+            dataSource?.append(model)
         }
         
     }
@@ -107,17 +112,41 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(M_PI/2.0000001))
             smallImage.transform = newTransform
             
-//            objc_setAssociatedObject(sectionButton,buttonKey, smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(sectionButton,"button", smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
         }else{
             let smallImage = UIImageView(frame: CGRectMake(10, (44 - 16)/2, 14, 16))
             smallImage.image = UIImage(named: "ico_list")
             view.addSubview(smallImage)
-//            objc_setAssociatedObject(sectionButton,buttonKey, smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(sectionButton,"button", smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         return view
     }
-    func sectionButtonClicked(){
-        
+    func sectionButtonClicked(sender: UIButton){
+        let model = dataSource![sender.tag]
+        var imageView: UIImageView = objc_getAssociatedObject(sender, "button") as! UIImageView
+        print(imageView)
+//        if model.isOpen == true{
+//            UIView.animateWithDuration(0.3, delay: 0.0, options: .TransitionNone, animations: { () -> Void in
+//                    let currentTransform = imageView.transform
+//                    let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(-M_PI/2))
+//                    imageView.transform = newTransform
+//                }, completion: { (bool) -> Void in
+//                  model.isOpen = false
+//            })
+//        }else{
+//            UIView.animateWithDuration(0.3, delay: 0.0, options: .TransitionNone, animations: { () -> Void in
+//                let currentTransform = imageView.transform
+//                let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(M_PI/2))
+//                imageView.transform = newTransform
+//                }, completion: { (bool) -> Void in
+//                    model.isOpen = true
+//            })
+//        }
+//        tableView?.reloadSections(NSIndexSet.init(index: sender.tag), withRowAnimation: .Fade)
+    }
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70
