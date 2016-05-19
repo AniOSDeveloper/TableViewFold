@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PersonCustomCell" rowHeight="70" id="KGk-i7-Jjw" customClass="PersonCustomCell" customModule="TableViewFold" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="426" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="426" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="火影02.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kry-uU-i7v">
+                        <rect key="frame" x="13" y="13" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Qtm-QE-fsL"/>
+                            <constraint firstAttribute="height" constant="50" id="vX9-mI-rLx"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7WV-TK-TnC">
+                        <rect key="frame" x="68" y="8" width="345" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="Tjl-h3-039"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="求知若渴，虚怀若谷。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="jDW-LN-Hzl">
+                        <rect key="frame" x="68" y="43" width="345" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Bdc-G7-bQF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="7WV-TK-TnC" secondAttribute="trailing" constant="5" id="2li-jm-CjE"/>
+                    <constraint firstItem="jDW-LN-Hzl" firstAttribute="top" secondItem="7WV-TK-TnC" secondAttribute="bottom" id="7mB-0D-yZ9"/>
+                    <constraint firstItem="jDW-LN-Hzl" firstAttribute="leading" secondItem="Kry-uU-i7v" secondAttribute="trailing" constant="5" id="ANL-sZ-T5R"/>
+                    <constraint firstItem="Kry-uU-i7v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Tp7-Vq-lOh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="jDW-LN-Hzl" secondAttribute="trailing" constant="5" id="cob-Ch-CXe"/>
+                    <constraint firstItem="7WV-TK-TnC" firstAttribute="leading" secondItem="Kry-uU-i7v" secondAttribute="trailing" constant="5" id="eky-ok-e86"/>
+                    <constraint firstItem="7WV-TK-TnC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="kW9-Sh-bx8"/>
+                    <constraint firstItem="Kry-uU-i7v" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="trU-bZ-hCJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="iconImageView" destination="Kry-uU-i7v" id="DhR-NJ-fwF"/>
+                <outlet property="nameLable" destination="7WV-TK-TnC" id="JGT-VN-clH"/>
+                <outlet property="sayingLable" destination="jDW-LN-Hzl" id="k2z-cC-nlf"/>
+            </connections>
+            <point key="canvasLocation" x="482" y="285.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="火影02.png" width="310" height="468"/>
+    </resources>
+</document>
