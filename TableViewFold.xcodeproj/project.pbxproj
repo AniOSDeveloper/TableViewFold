@@ -70,6 +70,7 @@
 		50A2528B1CED910F006AC928 /* 火影54.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A252551CED910F006AC928 /* 火影54.png */; };
 		50A252901CED9175006AC928 /* PersonCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A2528E1CED9175006AC928 /* PersonCustomCell.swift */; };
 		50A252911CED9175006AC928 /* PersonCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A2528F1CED9175006AC928 /* PersonCustomCell.xib */; };
+		50C0AEF51CEEB1B900F7588C /* SubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C0AEF41CEEB1B900F7588C /* SubViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5044A5F41CEEA39600844115 /* TableViewFold-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TableViewFold-Bridging-Header.h"; sourceTree = "<group>"; };
 		50A251EE1CED8FF9006AC928 /* TableViewFold.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewFold.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A251F11CED8FF9006AC928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50A251F31CED8FF9006AC928 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 		50A252551CED910F006AC928 /* 火影54.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "火影54.png"; sourceTree = "<group>"; };
 		50A2528E1CED9175006AC928 /* PersonCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCustomCell.swift; sourceTree = "<group>"; };
 		50A2528F1CED9175006AC928 /* PersonCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonCustomCell.xib; sourceTree = "<group>"; };
+		50C0AEF31CEEB1B900F7588C /* SubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubViewController.h; sourceTree = "<group>"; };
+		50C0AEF41CEEB1B900F7588C /* SubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,8 @@
 			children = (
 				50A251F11CED8FF9006AC928 /* AppDelegate.swift */,
 				50A251F31CED8FF9006AC928 /* ViewController.swift */,
+				50C0AEF31CEEB1B900F7588C /* SubViewController.h */,
+				50C0AEF41CEEB1B900F7588C /* SubViewController.m */,
 				50A2528C1CED913D006AC928 /* Models */,
 				50A2528D1CED913D006AC928 /* Views */,
 				50A2521F1CED910F006AC928 /* Sources */,
@@ -218,6 +224,7 @@
 				50A251F81CED8FF9006AC928 /* Assets.xcassets */,
 				50A251FA1CED8FF9006AC928 /* LaunchScreen.storyboard */,
 				50A251FD1CED8FF9006AC928 /* Info.plist */,
+				5044A5F41CEEA39600844115 /* TableViewFold-Bridging-Header.h */,
 			);
 			path = TableViewFold;
 			sourceTree = "<group>";
@@ -506,6 +513,7 @@
 				50A251F41CED8FF9006AC928 /* ViewController.swift in Sources */,
 				50A252901CED9175006AC928 /* PersonCustomCell.swift in Sources */,
 				50A251F21CED8FF9006AC928 /* AppDelegate.swift in Sources */,
+				50C0AEF51CEEB1B900F7588C /* SubViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,11 +655,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TableViewFold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.speeda.www.TableViewFold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TableViewFold/TableViewFold-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -659,11 +671,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = TableViewFold/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.speeda.www.TableViewFold;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TableViewFold/TableViewFold-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -8,10 +8,7 @@
 
 import UIKit
 
-class groupModel: NSObject{
-    
-    
-    
+class groupModel: NSObject{    
     var isOpen: Bool?
     var groupName: String?
     var groupCount: Int?
@@ -19,7 +16,8 @@ class groupModel: NSObject{
 }
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    static var buttonKey = "ButtonKey"
+    let buttonKey = "ButtonKey"
+    
     var tableView :UITableView?
     var firstArray : Array<String>?
     var secondArray : Array<String>?
@@ -27,6 +25,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        let rightButton = UIButton(type: .System)
+        rightButton.frame = CGRectMake(0, 0, 50, 30)
+        rightButton.setTitle("Next", forState: .Normal)
+        rightButton.addTarget(self, action: "nextViewController:", forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
+        
+        
         
         initData()
         
@@ -39,13 +47,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         dataSource = [groupModel]()
         for i in 1...15{
             let str = String(format: "火影%02d", i)
-            if i < 6{
+            if i < 20{
                 firstArray?.append(str)
             }else{
                 secondArray?.append(str)
             }
         }
-        for i in 1...2{
+        for i in 1...1{
             let model = groupModel()
             model.isOpen = false
             if i == 1{
@@ -112,22 +120,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(M_PI/2.0000001))
             smallImage.transform = newTransform
             
-            objc_setAssociatedObject(sectionButton,"button", smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(sectionButton,buttonKey, smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
         }else{
             let smallImage = UIImageView(frame: CGRectMake(10, (44 - 16)/2, 14, 16))
             smallImage.image = UIImage(named: "ico_list")
             view.addSubview(smallImage)
-            objc_setAssociatedObject(sectionButton,"button", smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(sectionButton,buttonKey, smallImage, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//            let imageView = objc_getAssociatedObject(sectionButton, buttonKey)
+//            print("---\(imageView)")
         }
         return view
     }
     func sectionButtonClicked(sender: UIButton){
         let model = dataSource![sender.tag]
-        var imageView: UIImageView = objc_getAssociatedObject(sender, "button") as! UIImageView
-        print(imageView)
+        let imageView = objc_getAssociatedObject(sender, buttonKey)
+        print("\(model)---\(imageView)")
 //        if model.isOpen == true{
-//            UIView.animateWithDuration(0.3, delay: 0.0, options: .TransitionNone, animations: { () -> Void in
+//            UIView.animateWithDuration(0.3, delay: 0.0, options: .AllowUserInteraction, animations: { () -> Void in
 //                    let currentTransform = imageView.transform
 //                    let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(-M_PI/2))
 //                    imageView.transform = newTransform
@@ -135,7 +145,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //                  model.isOpen = false
 //            })
 //        }else{
-//            UIView.animateWithDuration(0.3, delay: 0.0, options: .TransitionNone, animations: { () -> Void in
+//            UIView.animateWithDuration(0.3, delay: 0.0, options: .AllowUserInteraction, animations: { () -> Void in
 //                let currentTransform = imageView.transform
 //                let newTransform = CGAffineTransformRotate(currentTransform, CGFloat(M_PI/2))
 //                imageView.transform = newTransform
@@ -143,7 +153,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //                    model.isOpen = true
 //            })
 //        }
-//        tableView?.reloadSections(NSIndexSet.init(index: sender.tag), withRowAnimation: .Fade)
+//        tableView?.reloadSections(NSIndexSet.init(index: sender.tag), withRowAnimation: .Automatic)
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
@@ -151,6 +161,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 70
     }
+    
+    
+    func nextViewController(sender: UIButton){
+        let sub = SubViewController()
+        self.navigationController?.pushViewController(sub, animated: true)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
